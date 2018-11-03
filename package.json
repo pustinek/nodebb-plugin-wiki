@@ -1,0 +1,28 @@
+{
+  "name": "nodebb-plugin-wiki",
+  "version": "0.0.1",
+  "description": "Wiki pages for wiki",
+  "main": "library.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pustinek/nodebb-plugin-wiki"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "wiki",
+    "shell"
+  ],
+  "author": {
+    "name": "pustinek",
+    "email": "pustinek@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pustinek/nodebb-plugin-wiki/issues"
+  },
+  "readmeFilename": "README.md",
+  "nbbpm": {
+    "compatibility": "^1.0.0"
+  }
+}

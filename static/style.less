@@ -1,0 +1,366 @@
+/* Place any LESS in here */
+
+@shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+@shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+@shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+@table-border-color: rgba(0, 0, 0, 0.12);
+@table-striped-color: rgba(242, 242, 242, 0.5);
+
+.wiki-content {
+  width: 100%;
+}
+.dogewiki__row .heading {
+  &-primary {
+    color: black;
+    font-size: 2.5rem;
+  }
+  &-secondary {
+    color: #777777;
+    font-size: 1.5rem;
+  }
+}
+.dogewiki-section {
+  clear: both;
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #555;
+    box-shadow: 0 3px #eee;
+    display: inline-block;
+  }
+  h2 {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 3px #eee;
+    display: inline-block;
+  }
+  p {
+  }
+  .title {
+    width: 100%;
+    display: block;
+  }
+  .highlight {
+    font-weight: 700;
+  }
+
+  // Tables
+  table,
+  th,
+  td {
+    border: none;
+  }
+
+  table {
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    &.striped {
+      tr {
+        border-bottom: none;
+      }
+
+      > tbody {
+        > tr:nth-child(odd) {
+          background-color: @table-striped-color;
+        }
+
+        > tr > td {
+          border-radius: 0;
+        }
+      }
+    }
+
+    &.highlight > tbody > tr {
+      transition: background-color 0.25s ease;
+      &:hover {
+        background-color: @table-striped-color;
+      }
+    }
+
+    &.centered {
+      thead tr th,
+      tbody tr td {
+        text-align: center;
+      }
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid @table-border-color;
+  }
+
+  td,
+  th {
+    padding: 15px 5px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+}
+
+.dogewiki {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 50px;
+  @media only screen and (max-width: 1200px) {
+    flex-direction: column;
+  }
+
+  &__sidebar {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: @shadow-1;
+    flex-basis: 310px;
+    flex-shrink: 0;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    @media only screen and (max-width: 1200px) {
+      width: 100%;
+      flex-basis: auto;
+      margin-bottom: 10px;
+    }
+  }
+  &__main {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: @shadow-1;
+    box-flex: 1;
+    flex-grow: 1;
+    &-body {
+      padding: 26px 28px;
+      min-height: 250px;
+    }
+  }
+  &__page-selector {
+    padding: 2rem;
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.15s;
+    color: #f8a646;
+    cursor: pointer;
+    position: relative;
+    transform: translateZ(0);
+    transition: color 1000ms;
+    &.-active {
+      background-color: #f8a646;
+      color: white;
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid #f6f6f6;
+    }
+    &:hover {
+      color: white;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #f8a646;
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      transition-property: transform;
+      transition: transform 0.3s ease-out;
+    }
+    &:hover:before {
+      transform: scaleX(1);
+    }
+  }
+}
+
+#wiki-admin {
+  .categories {
+    width: 100%;
+    max-width: 1140px;
+    padding-bottom: 100px;
+    .category {
+      background-color: white;
+      width: 100%;
+      padding: 5px 20px 5px 20px;
+      height: 105px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      cursor: move;
+      &:hover {
+        box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25),
+          0 5px 5px rgba(0, 0, 0, 0.22);
+      }
+      span {
+        display: block;
+      }
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+      &__main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &-node {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+      &__extra {
+        display: flex;
+        align-items: center;
+      }
+      &__des {
+        font-weight: bold;
+        color: rgb(24, 24, 24);
+        width: 120px;
+      }
+      &__value {
+        flex-grow: 1;
+        color: rgba(0, 0, 0, 0.65);
+      }
+      &__delete {
+        width: 50px;
+        height: 50px;
+        color: white;
+        font-size: 20px;
+        background-color: #ed5e68;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        border-radius: 3px;
+      }
+    }
+  }
+  #add {
+    margin-bottom: 70px;
+  }
+}
+.wiki-admin__category-add {
+  .form-group {
+    position: relative;
+    margin-bottom: 10px;
+    &:not(:nth-last-child(2)) {
+      margin-bottom: 35px;
+    }
+  }
+  input {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #775577;
+  }
+  input:focus {
+    outline: none;
+  }
+  label {
+    color: #999;
+    font-size: 16px;
+    font-weight: thin;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 1px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+  /* active state */
+  input:focus ~ label,
+  input:valid ~ label {
+    top: -20px;
+    font-size: 12px;
+    color: #5264ae;
+  }
+
+  /* BOTTOM BARS ================================= */
+  .bar {
+    position: relative;
+    display: block;
+    width: 300px;
+  }
+  .bar:before,
+  .bar:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264ae;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+  .bar:before {
+    left: 50%;
+  }
+  .bar:after {
+    right: 50%;
+  }
+
+  /* active state */
+  input:focus ~ .bar:before,
+  input:focus ~ .bar:after {
+    width: 50%;
+  }
+
+  /* HIGHLIGHTER ================================== */
+  .highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* active state */
+  input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+  }
+  /* Error message ================================== */
+  .error-message {
+    color: red;
+  }
+  /* ANIMATIONS ================ */
+  @-webkit-keyframes inputHighlighter {
+    from {
+      background: #5264ae;
+    }
+    to {
+      width: 0;
+      background: transparent;
+    }
+  }
+  @-moz-keyframes inputHighlighter {
+    from {
+      background: #5264ae;
+    }
+    to {
+      width: 0;
+      background: transparent;
+    }
+  }
+  @keyframes inputHighlighter {
+    from {
+      background: #5264ae;
+    }
+    to {
+      width: 0;
+      background: transparent;
+    }
+  }
+}
