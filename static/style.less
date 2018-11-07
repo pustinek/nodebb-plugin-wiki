@@ -7,6 +7,81 @@
 @table-border-color: rgba(0, 0, 0, 0.12);
 @table-striped-color: rgba(242, 242, 242, 0.5);
 
+#plugin-page-wiki-home {
+  .page-description {
+    padding-bottom: 10px;
+  }
+  .heading-primary {
+    text-transform: capitalize;
+    color: #191e1e;
+    font-size: 2rem;
+    margin: 0 0 3px 0;
+    margin-right: auto;
+    font-weight: normal;
+  }
+  .heading-secondary {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: #7c9292;
+    font-weight: normal;
+  }
+  .wiki-categories {
+    display: inline-grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row: auto;
+    @media screen and (max-width: 1100px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 820px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 600px) {
+      grid-template-columns: repeat(1, 1fr);
+      width: 100%;
+    }
+
+    .wiki-category {
+      width: 250px;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: @shadow-1;
+      transition: all 0.3s;
+      background-color: white;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+      &:hover {
+        box-shadow: @shadow-2;
+        transform: translate(0, -5px);
+      }
+      &__link {
+        text-align: center;
+      }
+      &__title {
+        color: #f8a646;
+        margin-bottom: 5px;
+        padding: 0;
+        margin: 0;
+        font-size: 2rem;
+      }
+      &__description {
+        font-size: 1.2rem;
+        padding: 0;
+        margin: 0;
+        font-weight: normal;
+        color: #777777;
+      }
+    }
+  }
+}
+.text-warning {
+  color: #ffc107;
+}
 .wiki-content {
   width: 100%;
 }
@@ -105,7 +180,7 @@
 }
 
 .dogewiki {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 50px;
@@ -362,5 +437,65 @@
       width: 0;
       background: transparent;
     }
+  }
+}
+
+
+//LOADER:
+.lds-ellipsis {
+  display: flex;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: auto;
+
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #f8a646;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "nodebb-plugin-wiki",
-  "version": "0.0.1",
-  "description": "Wiki pages for wiki",
+  "version": "0.0.2",
+  "description": "Wikipedia for Nodebb",
   "main": "library.js",
   "repository": {
     "type": "git",

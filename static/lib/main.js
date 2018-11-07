@@ -105,12 +105,26 @@ $(document).ready(function() {
 					dataList.push(a);
 				});
 				$("#dogewiki-content").append(html);
+				contentLoaded();
 				appendEvents();
+			},error: function(jqXHR, status, err) {
+				if(jqXHR.status == 404) {
+					//HTML not found
+					console.log(jqXHR.status);
+					$(".js-wiki-warning").html("<span class=\"text-warning\">Warning: </span>HTML content not found, contact administrator for him to add it !");
+					$(".js-wiki-content").css("display","none");
+					$(".lds-ellipsis").css("display","none");
+				}
+			
 			} } );
 
 		});
 		}else {
 			//console.log("isn't wiki !");
+		}
+		function contentLoaded() {
+			$(".js-wiki-content").css("display","flex");
+			$(".lds-ellipsis").css("display","none");
 		}
 	 });
 });

@@ -19,7 +19,6 @@ define("admin/plugins/wiki", ["settings"], function(Settings) {
 
     //***********************DELETE ************************/
     $(".js-category-delete").on("click", function() {
-      console.log("delete category :)");
       let categoryEl = $(this).closest(".category");
       let categoryCid = categoryEl.data("category-cid");
       deleteCategory(categoryCid)

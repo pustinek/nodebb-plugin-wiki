@@ -27,8 +27,8 @@
 </ol>
 <!-- ENDIF breadcrumbs.length -->
 <!-- <button class="screen-it-up">FullScreen</button> -->
-
-<div class="dogewiki">
+<span class="js-wiki-warning"></span>
+<div class="dogewiki js-wiki-content">
     <div class="dogewiki__sidebar" id="js-dogewiki__sidebar">
     </div>
     <div class="dogewiki__main">
@@ -36,3 +36,4 @@
         </div>
     </div>
 </div>
+<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
